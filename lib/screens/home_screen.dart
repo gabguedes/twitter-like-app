@@ -34,28 +34,30 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: ListView.separated(
-        itemCount: PostInherited.of(context).postList.length,
-        separatorBuilder: (BuildContext context, int index) => Divider(
-          height: 0,
-          color: CoresTema().midPurple,
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return PostInherited.of(context).postList[index];
-        },
-      ),
+      body: 
+      ListView(children: PostInherited.of(context).postList,),
+      // ListView.separated(
+      //   itemCount: PostInherited.of(context).postList.length,
+      //   separatorBuilder: (context, int index) => Divider(
+      //     height: 0,
+      //     color: CoresTema().midPurple,
+      //   ),
+      //   itemBuilder: (BuildContext newContext, int index) {
+      //     return PostInherited.of(context).postList[index];
+      //   },
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (newContext) => NewPostScreen(
-          //       context: context,
-          //     ),
-          //   ),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (newContext) => NewPostScreen(
+                postContext: context,
+              ),
+            ),
+          );
         },
-        tooltip: 'Increment',
+        tooltip: 'New Post',
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:social_media_app/cores.dart';
 import 'package:social_media_app/model/usuario.dart';
 
 class Post extends StatelessWidget {
@@ -27,7 +28,11 @@ class Post extends StatelessWidget {
       children: [
         Container(
           height: temImagem(imagemPost) ? 300 : 100,
-          color: Colors.black38,
+          
+          decoration: BoxDecoration(
+            color: Colors.black38,
+            border: Border.symmetric(horizontal: BorderSide(color: CoresTema().midPurple, width: 0.5))
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
