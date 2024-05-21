@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: PostInherited(
-        child: const NewPostScreen(),
+        child: const HomeScreen(),
       ),
     );
   }
