@@ -56,6 +56,10 @@ class PostInherited extends InheritedWidget {
     ),
   ];
 
+  // void addPost(String post){
+  //   postList.add(Post(usuario: usuarios[0], textoPost: post));
+  // }
+
   static PostInherited of(BuildContext context) {
     final PostInherited? result =
         context.dependOnInheritedWidgetOfExactType<PostInherited>();

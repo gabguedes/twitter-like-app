@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media_app/data/post_inherited.dart';
+import 'package:social_media_app/screens/new_post_screen.dart';
 import '../cores.dart';
 import '../model/usuario.dart';
 
@@ -44,7 +45,16 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (newContext) => NewPostScreen(
+          //       context: context,
+          //     ),
+          //   ),
+          // );
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
