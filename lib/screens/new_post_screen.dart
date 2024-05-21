@@ -60,10 +60,18 @@ class _NewPostScreenState extends State<NewPostScreen> {
                       SizedBox(
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
+                            if(formImagem){
+                              if (_formKey.currentState!.validate()) {
+                              PostInherited.of(widget.postContext)
+                                  .addPostWithImage(postController.text, imageController.text);
+                              Navigator.pop(context);
+                            }
+                            }else{
+                              if (_formKey.currentState!.validate()) {
                               PostInherited.of(widget.postContext)
                                   .addPost(postController.text);
                               Navigator.pop(context);
+                            }
                             }
                           },
                           child: Text(
