@@ -15,24 +15,32 @@ class Post extends StatelessWidget {
     this.imagemPost,
   });
 
-  bool temImagem(imagemPost){
-    if(imagemPost != null){
+  bool temImagem(imagemPost) {
+    if (imagemPost != null) {
       return true;
     }
     return false;
   }
 
+
+  bool assetOrNetwork() {
+    if (temImagem(imagemPost) && imagemPost!.contains('http')) {
+      return false;
+    }
+    return true;
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
           height: temImagem(imagemPost) ? 300 : 100,
-          
           decoration: BoxDecoration(
-            color: Colors.black38,
-            border: Border.symmetric(horizontal: BorderSide(color: CoresTema().midPurple, width: 0.5))
-          ),
+              color: Colors.black38,
+              border: Border.symmetric(
+                  horizontal:
+                      BorderSide(color: CoresTema().midPurple, width: 0.5))),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -81,15 +89,30 @@ class Post extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10,),
-                  temImagem(imagemPost) ? SizedBox(
-                    height: 180,
-                    width: 296,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(imagemPost!, fit: BoxFit.cover,),
-                    ),
-                  ) : Container(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  temImagem(imagemPost)
+                      ? SizedBox(
+                          height: 180,
+                          width: 296,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: assetOrNetwork()
+                                ? Image.asset(
+                                    imagemPost!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    imagemPost!,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Container();
+                                    },
+                                  ),
+                          ),
+                        )
+                      : Container(),
                 ],
               ),
             ],
